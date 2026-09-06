@@ -3,25 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="0; url=https://www.handball.net/team/62877?season_id=2627">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Handball Team</title>
-<script>
-  window.location.replace("https://www.handball.net/team/62877?season_id=2627");
-</script>
 <style>
-  body {
+  html, body {
     margin: 0;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: -apple-system, sans-serif;
     background: #0f172a;
     color: #fff;
+    text-align: center;
   }
+  .wrap { padding: 24px; }
+  a.button {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 14px 28px;
+    background: #22c55e;
+    color: #0f172a;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  p { opacity: 0.8; font-size: 14px; }
 </style>
 </head>
 <body>
-  <p>Öffne Team-Seite …</p>
+  <div class="wrap">
+    <div id="content">
+      <a class="button" id="openLink" href="https://www.handball.net/team/62877?season_id=2627">Team-Seite öffnen</a>
+      <p>Tipp: Diese Seite jetzt über "Teilen → Zum Home-Bildschirm" sichern.<br>
+      Beim Start über das Icon öffnet sich die Team-Seite automatisch.</p>
+    </div>
+  </div>
+
+<script>
+  var target = "https://www.handball.net/team/62877?season_id=2627";
+  var isStandalone = window.navigator.standalone === true ||
+                      window.matchMedia('(display-mode: standalone)').matches;
+
+  if (isStandalone) {
+    // Wurde über das Home-Bildschirm-Icon gestartet -> sofort weiterleiten
+    window.location.replace(target);
+  }
+  // Wenn NICHT standalone (normaler Safari-Tab): Seite bleibt stehen,
+  // damit sie zum Home-Bildschirm hinzugefügt werden kann.
+</script>
 </body>
 </html>
